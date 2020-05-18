@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2D2D2D" />
+  
+  <title>Stream Hopper :: Stream Hopper</title>
+  
+
+  <link rel="icon" type="image/png" sizes="32x32" href="_static/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="_static/img/favicon-16x16.png">
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+
+  <link rel="stylesheet" href="_static/css/insegel.css"/>
+
+  <script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'',
+        VERSION:'0',
+        LANGUAGE:'None',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+    };
+  </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+
+  <script src="https://email.tl.fortawesome.com/c/eJxNjUEOgyAQAF8jR7Kw6wIHDh7sP1Cw2mgxgmn6-3JsMqc5zEQfE8dkxOY1KKMUOI3ACFKRJpSW2AAp7ontYIaxI6i7XPJVwyeVfCQ550Os3jLrGSNOLgbdAy6s0PBk2TFNjEbsfq31LB0OnX407pJa5v2faRadwSW63mn5KuLyR9j2tgx3zecanl-55R_-jjPs"></script>
+
+</head>
+
+<body>
+  <div id="insegel-container">
+    <header>
+      <div id="logo-container">
+          
+          <a href="index.html"><img src="_static/img/logo.svg"></a>
+          
+
+      </div>
+      <div id="project-container">
+        <h1>Stream Hopper Documentation</h1>
+      </div>
+    </header>
+
+    <div id="content-container">
+
+      <div id="main-content-container">
+        <div id="main-content-header">
+          <h1>Stream Hopper</h1>
+        </div>
+        <div id="main-content">
+          
+  <div class="section" id="module-cluster_predict_v1">
+<span id="stream-hopper"></span><h1>Stream Hopper<a class="headerlink" href="#module-cluster_predict_v1" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="cluster_predict_v1.cluster_predict_on_questionare">
+<code class="sig-prename descclassname">cluster_predict_v1.</code><code class="sig-name descname">cluster_predict_on_questionare</code><span class="sig-paren">(</span><em class="sig-param">response</em>, <em class="sig-param">model_path='app/models/km_v1.pkl'</em><span class="sig-paren">)</span><a class="headerlink" href="#cluster_predict_v1.cluster_predict_on_questionare" title="Permalink to this definition">¶</a></dt>
+<dd><p>This functioun takes in a questionnaire response and loads a model which predicts off that
+Currently working on the label encoded data from ‘Questionnaire.csv’
+Output is an int</p>
+<p>Note: Input must be as a 1-row pandas dataframe with columns:
+[‘username’, ‘q1’, ‘q2’, ‘q3’, ‘q4’, ‘q5’, ‘q6’, ‘q7’, ‘q8’, ‘q9’, ‘q10’, ‘q11’, ‘q12’, ‘q13’]</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="cluster_predict_v1.cluster_v1_data_convert">
+<code class="sig-prename descclassname">cluster_predict_v1.</code><code class="sig-name descname">cluster_v1_data_convert</code><span class="sig-paren">(</span><em class="sig-param">df</em><span class="sig-paren">)</span><a class="headerlink" href="#cluster_predict_v1.cluster_v1_data_convert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper funciton to cluster_predict_on_questionare
+Takes in a dataframe of one user questionnaire
+Returns it in the format that cluster_v1 wants</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="cluster_predict_v1.create_dataframe">
+<code class="sig-prename descclassname">cluster_predict_v1.</code><code class="sig-name descname">create_dataframe</code><span class="sig-paren">(</span><em class="sig-param">row</em><span class="sig-paren">)</span><a class="headerlink" href="#cluster_predict_v1.create_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function creates a dataframe using the user data from the questionaire.</p>
+</dd></dl>
+
+<span class="target" id="module-cluster_predict_v2"></span><dl class="function">
+<dt id="cluster_predict_v2.cluster_prediction_v2">
+<code class="sig-prename descclassname">cluster_predict_v2.</code><code class="sig-name descname">cluster_prediction_v2</code><span class="sig-paren">(</span><em class="sig-param">row</em>, <em class="sig-param">model_path='models/km_v2.pkl'</em><span class="sig-paren">)</span><a class="headerlink" href="#cluster_predict_v2.cluster_prediction_v2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Only function which should be called in routes
+Takes in a single row (as a df)
+Encodes, predicts, and returns persona number</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="cluster_predict_v2.make_dummy_with_max">
+<code class="sig-prename descclassname">cluster_predict_v2.</code><code class="sig-name descname">make_dummy_with_max</code><span class="sig-paren">(</span><em class="sig-param">df</em>, <em class="sig-param">col</em>, <em class="sig-param">max_val=3</em><span class="sig-paren">)</span><a class="headerlink" href="#cluster_predict_v2.make_dummy_with_max" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rather than make dummies, I need to specifiy the max value
+This makes this function repeatable
+This also wont break unless questions are renamed</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="cluster_predict_v2.multiple_option_cols">
+<code class="sig-prename descclassname">cluster_predict_v2.</code><code class="sig-name descname">multiple_option_cols</code><span class="sig-paren">(</span><em class="sig-param">df</em><span class="sig-paren">)</span><a class="headerlink" href="#cluster_predict_v2.multiple_option_cols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper funciton to cluster_predict_on_questionare
+Takes in a dataframe of one user questionnaire
+Returns it in the format that cluster_v1 wants</p>
+</dd></dl>
+
+<span class="target" id="module-guidebox_query"></span><dl class="function">
+<dt id="guidebox_query.collate_data">
+<code class="sig-prename descclassname">guidebox_query.</code><code class="sig-name descname">collate_data</code><span class="sig-paren">(</span><em class="sig-param">shows</em><span class="sig-paren">)</span><a class="headerlink" href="#guidebox_query.collate_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loops through a list of dictionaries where each dict contains
+info for a show.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param shows</dt>
+<dd class="field-odd"><p>A list of show dictionaries gotten from the api.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="guidebox_query.collate_movie_data">
+<code class="sig-prename descclassname">guidebox_query.</code><code class="sig-name descname">collate_movie_data</code><span class="sig-paren">(</span><em class="sig-param">movies</em><span class="sig-paren">)</span><a class="headerlink" href="#guidebox_query.collate_movie_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loops through a list of dictionaries where each dict contains
+info for a movie.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param shows</dt>
+<dd class="field-odd"><p>A list of movie dictionaries gotten from the api.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="guidebox_query.dict_to_df">
+<code class="sig-prename descclassname">guidebox_query.</code><code class="sig-name descname">dict_to_df</code><span class="sig-paren">(</span><em class="sig-param">data_dict</em>, <em class="sig-param">platform</em><span class="sig-paren">)</span><a class="headerlink" href="#guidebox_query.dict_to_df" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Converts a dictionary to a pandas DataFrame Object.</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param data_dict</dt>
+<dd class="field-odd"><p>Dictionary to convert.</p>
+</dd>
+<dt class="field-even">param platforms</dt>
+<dd class="field-even"><p>Platforms from which data was collected.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="guidebox_query.get_data">
+<code class="sig-prename descclassname">guidebox_query.</code><code class="sig-name descname">get_data</code><span class="sig-paren">(</span><em class="sig-param">num_shows=3000, rate_limit=250, platforms=['amazon_prime', 'netflix', 'hulu']</em><span class="sig-paren">)</span><a class="headerlink" href="#guidebox_query.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><dl>
+<dt>Get show data for each platform listed.</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param num_shows</dt>
+<dd class="field-odd"><p>The max number of shows you want to query. Default: 3000.</p>
+</dd>
+<dt class="field-even">param rate_limit</dt>
+<dd class="field-even"><p>Max is 250. Used for pagination. Default: 250.</p>
+</dd>
+<dt class="field-odd">param platforms</dt>
+<dd class="field-odd"><p>List of streaming services you want to query.</p>
+</dd>
+</dl>
+<p>Default: [‘amazon_prime’, ‘netflix’, ‘hulu’]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="guidebox_query.get_movie_data">
+<code class="sig-prename descclassname">guidebox_query.</code><code class="sig-name descname">get_movie_data</code><span class="sig-paren">(</span><em class="sig-param">num_shows=3000, rate_limit=250, platforms=['amazon_prime', 'netflix', 'hulu']</em><span class="sig-paren">)</span><a class="headerlink" href="#guidebox_query.get_movie_data" title="Permalink to this definition">¶</a></dt>
+<dd><dl>
+<dt>Get movie data for each platform listed.</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param num_shows</dt>
+<dd class="field-odd"><p>The max number of shows you want to query. Default: 3000.</p>
+</dd>
+<dt class="field-even">param rate_limit</dt>
+<dd class="field-even"><p>Max is 250. Used for pagination. Default: 250.</p>
+</dd>
+<dt class="field-odd">param platforms</dt>
+<dd class="field-odd"><p>List of streaming services you want to query.</p>
+</dd>
+</dl>
+<p>Default: [‘amazon_prime’, ‘netflix’, ‘hulu’].</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="guidebox_query.get_movie_info">
+<code class="sig-prename descclassname">guidebox_query.</code><code class="sig-name descname">get_movie_info</code><span class="sig-paren">(</span><em class="sig-param">movies_dict</em>, <em class="sig-param">movie_info</em><span class="sig-paren">)</span><a class="headerlink" href="#guidebox_query.get_movie_info" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>This function extracts relevant movie info from dictionary.</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param movies_dict</dt>
+<dd class="field-odd"><p>dictionary that is to be updated</p>
+</dd>
+<dt class="field-even">param movie_info</dt>
+<dd class="field-even"><p>dictionary containing query info</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="guidebox_query.get_show_info">
+<code class="sig-prename descclassname">guidebox_query.</code><code class="sig-name descname">get_show_info</code><span class="sig-paren">(</span><em class="sig-param">shows_dict</em>, <em class="sig-param">show_info</em><span class="sig-paren">)</span><a class="headerlink" href="#guidebox_query.get_show_info" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>This function extracts relevant tv show info from dictionary.</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param shows_dict</dt>
+<dd class="field-odd"><p>dictionary that is to be updated</p>
+</dd>
+<dt class="field-even">param show_info</dt>
+<dd class="field-even"><p>dictionary containing query info</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="guidebox_query.merge_platform_dfs">
+<code class="sig-prename descclassname">guidebox_query.</code><code class="sig-name descname">merge_platform_dfs</code><span class="sig-paren">(</span><em class="sig-param">dfs</em><span class="sig-paren">)</span><a class="headerlink" href="#guidebox_query.merge_platform_dfs" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Converts dictionaries to dataframes and concatenates them.</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param dfs</dt>
+<dd class="field-odd"><p>A dictionary containing movie/show info.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-imdb_query"></span><dl class="function">
+<dt id="imdb_query.acquire_imdb_data">
+<code class="sig-prename descclassname">imdb_query.</code><code class="sig-name descname">acquire_imdb_data</code><span class="sig-paren">(</span><em class="sig-param">imdb_ids</em><span class="sig-paren">)</span><a class="headerlink" href="#imdb_query.acquire_imdb_data" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>This function acquires raw IMDB data using IMDB API for each show.</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param imdb_ids</dt>
+<dd class="field-odd"><p>Pandas Series containing IMDB IDs for shows</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="imdb_query.collect_image_data">
+<code class="sig-prename descclassname">imdb_query.</code><code class="sig-name descname">collect_image_data</code><span class="sig-paren">(</span><em class="sig-param">all_shows_info</em><span class="sig-paren">)</span><a class="headerlink" href="#imdb_query.collect_image_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function creates a dataframe of each show’s ID and corresponding
+image URLs.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param all_shows_info</dt>
+<dd class="field-odd"><p>list of dicts containing raw metadata for all shows_dict</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="imdb_query.collect_metadata">
+<code class="sig-prename descclassname">imdb_query.</code><code class="sig-name descname">collect_metadata</code><span class="sig-paren">(</span><em class="sig-param">all_shows_info</em>, <em class="sig-param">show_type</em><span class="sig-paren">)</span><a class="headerlink" href="#imdb_query.collect_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function collects required metadata from the raw IMDB data and outputs
+them in a Pandas DataFrame.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param all_shows_info</dt>
+<dd class="field-odd"><p>list of dicts containing raw metadata for all shows</p>
+</dd>
+<dt class="field-even">param show_type</dt>
+<dd class="field-even"><p>string specifying type of show.</p>
+</dd>
+</dl>
+<p>Options are ‘tv’ or ‘movie’</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="imdb_query.collect_text_data">
+<code class="sig-prename descclassname">imdb_query.</code><code class="sig-name descname">collect_text_data</code><span class="sig-paren">(</span><em class="sig-param">all_shows_info</em><span class="sig-paren">)</span><a class="headerlink" href="#imdb_query.collect_text_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function creates a dataframe of each show’s ID and
+corresponding text metadata.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param all_shows_info</dt>
+<dd class="field-odd"><p>list of dicts containing raw metadata for all shows</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="imdb_query.create_crew_df">
+<code class="sig-prename descclassname">imdb_query.</code><code class="sig-name descname">create_crew_df</code><span class="sig-paren">(</span><em class="sig-param">all_shows_info</em>, <em class="sig-param">crew_type</em>, <em class="sig-param">max_cast_num=7</em><span class="sig-paren">)</span><a class="headerlink" href="#imdb_query.create_crew_df" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function creates a Pandas dataframe of each crew member’s ID and
+corresponding name.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param all_shows_info</dt>
+<dd class="field-odd"><p>list of dicts containing raw metadata for all shows</p>
+</dd>
+<dt class="field-even">param crew_type</dt>
+<dd class="field-even"><p>string specifying the specific team e.g. cast, directors
+e.g. cast, writers, directors, producers.</p>
+</dd>
+<dt class="field-odd">param max_cast_num</dt>
+<dd class="field-odd"><p>integer specifying the maximum number of members to
+collect info from the crew. Default is 7.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="imdb_query.get_crew_info">
+<code class="sig-prename descclassname">imdb_query.</code><code class="sig-name descname">get_crew_info</code><span class="sig-paren">(</span><em class="sig-param">show_info</em>, <em class="sig-param">crew_type</em>, <em class="sig-param">max_num=7</em><span class="sig-paren">)</span><a class="headerlink" href="#imdb_query.get_crew_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function fetches the IDs and names of each member working on a show
+in a certain crew e.g. cast members</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param show_info</dt>
+<dd class="field-odd"><p>dictionary containing metadata on a single show</p>
+</dd>
+<dt class="field-even">param crew_type</dt>
+<dd class="field-even"><p>string specifying the specific team e.g. cast, directors
+e.g. cast, writers, directors, producers.</p>
+</dd>
+<dt class="field-odd">param max_num</dt>
+<dd class="field-odd"><p>integer specifying the maximum number of members to collect
+info from the crew. Default is 7.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="imdb_query.get_dict_from_items">
+<code class="sig-prename descclassname">imdb_query.</code><code class="sig-name descname">get_dict_from_items</code><span class="sig-paren">(</span><em class="sig-param">show_id</em>, <em class="sig-param">show_items</em><span class="sig-paren">)</span><a class="headerlink" href="#imdb_query.get_dict_from_items" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function creates a Python dictionary of the raw IMDB data
+for a given show.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param show_id</dt>
+<dd class="field-odd"><p>IMDB ID for the show</p>
+</dd>
+<dt class="field-even">param show_items</dt>
+<dd class="field-even"><p>list of key-value tuples for the show where key is the</p>
+</dd>
+</dl>
+<p>metadata type (e.g. genre) and value is the metadata info (e.g. action)</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="imdb_query.get_ids">
+<code class="sig-prename descclassname">imdb_query.</code><code class="sig-name descname">get_ids</code><span class="sig-paren">(</span><em class="sig-param">show_info</em>, <em class="sig-param">id_type='cast'</em>, <em class="sig-param">max_num=7</em><span class="sig-paren">)</span><a class="headerlink" href="#imdb_query.get_ids" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function fetches the IDs of each member working for a specific crew
+for a specific show</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param show_info</dt>
+<dd class="field-odd"><p>dictionary containing metadata on a single show</p>
+</dd>
+<dt class="field-even">param id_type</dt>
+<dd class="field-even"><p>string specifying the specific team e.g. cast, directors</p>
+</dd>
+<dt class="field-odd">param max_num</dt>
+<dd class="field-odd"><p>integer specifying the maximum number of members to collect
+info from the crew. Default is 7.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="imdb_query.get_info">
+<code class="sig-prename descclassname">imdb_query.</code><code class="sig-name descname">get_info</code><span class="sig-paren">(</span><em class="sig-param">show_info</em>, <em class="sig-param">info_key</em><span class="sig-paren">)</span><a class="headerlink" href="#imdb_query.get_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>This fetches metadata information for a given show for a given key
+e.g. genre</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param show_info</dt>
+<dd class="field-odd"><p>dictionary containing metadata on a single show</p>
+</dd>
+<dt class="field-even">param info_key</dt>
+<dd class="field-even"><p>string containing the type of metadata e.g. genre</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="imdb_query.get_movie_info">
+<code class="sig-prename descclassname">imdb_query.</code><code class="sig-name descname">get_movie_info</code><span class="sig-paren">(</span><em class="sig-param">shows_dict</em>, <em class="sig-param">show_info</em><span class="sig-paren">)</span><a class="headerlink" href="#imdb_query.get_movie_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function fetches metadata information for a movie and updates the
+dictionary containing metadata information for all the movies.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param shows_dict</dt>
+<dd class="field-odd"><p>dictionary containing metadata on each movie</p>
+</dd>
+<dt class="field-even">param show_info</dt>
+<dd class="field-even"><p>dictionary containing metadata on a single movie</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="imdb_query.get_tv_info">
+<code class="sig-prename descclassname">imdb_query.</code><code class="sig-name descname">get_tv_info</code><span class="sig-paren">(</span><em class="sig-param">shows_dict</em>, <em class="sig-param">show_info</em><span class="sig-paren">)</span><a class="headerlink" href="#imdb_query.get_tv_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function fetches metadata information for a tv show and updates the
+dictionary containing metadata information for all the tv shows</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param shows_dict</dt>
+<dd class="field-odd"><p>dictionary containing metadata on each tv show</p>
+</dd>
+<dt class="field-even">param show_info</dt>
+<dd class="field-even"><p>dictionary containing metadata on a single tv show</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="imdb_query.process_imdb_ids">
+<code class="sig-prename descclassname">imdb_query.</code><code class="sig-name descname">process_imdb_ids</code><span class="sig-paren">(</span><em class="sig-param">imdb_ids</em><span class="sig-paren">)</span><a class="headerlink" href="#imdb_query.process_imdb_ids" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>This function removes missing and/or repeated IMDB IDs.</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param imdb_ids</dt>
+<dd class="field-odd"><p>Pandas Series containing IMDB IDs for shows</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-search"></span><dl class="function">
+<dt id="search.compute_crew_similarity">
+<code class="sig-prename descclassname">search.</code><code class="sig-name descname">compute_crew_similarity</code><span class="sig-paren">(</span><em class="sig-param">crew_a</em>, <em class="sig-param">crew_b</em><span class="sig-paren">)</span><a class="headerlink" href="#search.compute_crew_similarity" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function computes the intersection between the crew members
+of two shows</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="search.compute_genre_similarity">
+<code class="sig-prename descclassname">search.</code><code class="sig-name descname">compute_genre_similarity</code><span class="sig-paren">(</span><em class="sig-param">genre_a</em>, <em class="sig-param">genre_b</em><span class="sig-paren">)</span><a class="headerlink" href="#search.compute_genre_similarity" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function computes the interesection between the genres of
+two shows</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="search.compute_rating_similarity">
+<code class="sig-prename descclassname">search.</code><code class="sig-name descname">compute_rating_similarity</code><span class="sig-paren">(</span><em class="sig-param">rating_a</em>, <em class="sig-param">rating_b</em><span class="sig-paren">)</span><a class="headerlink" href="#search.compute_rating_similarity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Divides rating_b by 10</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="search.compute_similarity_search">
+<code class="sig-prename descclassname">search.</code><code class="sig-name descname">compute_similarity_search</code><span class="sig-paren">(</span><em class="sig-param">search_meta: pandas.core.frame.DataFrame</em>, <em class="sig-param">shows_meta: pandas.core.frame.DataFrame</em>, <em class="sig-param">show_type='movie'</em><span class="sig-paren">)</span><a class="headerlink" href="#search.compute_similarity_search" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the similarity scores between starter items and rest of the
+catalog</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="search.compute_votes_similarity">
+<code class="sig-prename descclassname">search.</code><code class="sig-name descname">compute_votes_similarity</code><span class="sig-paren">(</span><em class="sig-param">votes_a</em>, <em class="sig-param">votes_b</em><span class="sig-paren">)</span><a class="headerlink" href="#search.compute_votes_similarity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log base 10 transforms votes_b</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="search.cross_join">
+<code class="sig-prename descclassname">search.</code><code class="sig-name descname">cross_join</code><span class="sig-paren">(</span><em class="sig-param">df1</em>, <em class="sig-param">df2</em><span class="sig-paren">)</span><a class="headerlink" href="#search.cross_join" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function performs cross join between two dataframes.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="search.get_info">
+<code class="sig-prename descclassname">search.</code><code class="sig-name descname">get_info</code><span class="sig-paren">(</span><em class="sig-param">imdb_id: int</em>, <em class="sig-param">df: pandas.core.frame.DataFrame</em>, <em class="sig-param">info: str</em><span class="sig-paren">)</span><a class="headerlink" href="#search.get_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the “info” column from df row with imdb_id</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="search.get_plot_scores">
+<code class="sig-prename descclassname">search.</code><code class="sig-name descname">get_plot_scores</code><span class="sig-paren">(</span><em class="sig-param">starter_meta_df: pandas.core.frame.DataFrame</em>, <em class="sig-param">merged_df: pandas.core.frame.DataFrame</em><span class="sig-paren">)</span><a class="headerlink" href="#search.get_plot_scores" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the similarity score between plots using TFIDF</p>
+</dd></dl>
+
+<span class="target" id="module-similarity"></span><dl class="function">
+<dt id="similarity.compare_titles">
+<code class="sig-prename descclassname">similarity.</code><code class="sig-name descname">compare_titles</code><span class="sig-paren">(</span><em class="sig-param">title_a</em>, <em class="sig-param">title_b</em><span class="sig-paren">)</span><a class="headerlink" href="#similarity.compare_titles" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Title comparison function.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title_a</strong> – title for content a</p></li>
+<li><p><strong>title_b</strong> – title for content b</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="similarity.compute_crew_similarity">
+<code class="sig-prename descclassname">similarity.</code><code class="sig-name descname">compute_crew_similarity</code><span class="sig-paren">(</span><em class="sig-param">crew_a</em>, <em class="sig-param">crew_b</em><span class="sig-paren">)</span><a class="headerlink" href="#similarity.compute_crew_similarity" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function computes the intersection between the crew members
+of two shows</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="similarity.compute_genre_similarity">
+<code class="sig-prename descclassname">similarity.</code><code class="sig-name descname">compute_genre_similarity</code><span class="sig-paren">(</span><em class="sig-param">genre_a</em>, <em class="sig-param">genre_b</em><span class="sig-paren">)</span><a class="headerlink" href="#similarity.compute_genre_similarity" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function computes the interesection between the genres of
+two shows</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="similarity.compute_rating_similarity">
+<code class="sig-prename descclassname">similarity.</code><code class="sig-name descname">compute_rating_similarity</code><span class="sig-paren">(</span><em class="sig-param">rating_a</em>, <em class="sig-param">rating_b</em><span class="sig-paren">)</span><a class="headerlink" href="#similarity.compute_rating_similarity" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Computes the rating similarity score.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rating_a</strong> – ratings for content a</p></li>
+<li><p><strong>rating_b</strong> – ratings for content b</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="similarity.compute_similarity_scores">
+<code class="sig-prename descclassname">similarity.</code><code class="sig-name descname">compute_similarity_scores</code><span class="sig-paren">(</span><em class="sig-param">starter_meta_df: pandas.core.frame.DataFrame</em>, <em class="sig-param">merged_df: pandas.core.frame.DataFrame</em>, <em class="sig-param">imgs_df: pandas.core.frame.DataFrame</em>, <em class="sig-param">show_type='movie'</em><span class="sig-paren">)</span><a class="headerlink" href="#similarity.compute_similarity_scores" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>This function returns the computation for all source similarity scores.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>starter_meta_df</strong> – dataframe</p></li>
+<li><p><strong>merged_df</strong> – dataframe</p></li>
+<li><p><strong>imgs_df</strong> – dataframe</p></li>
+<li><p><strong>show_type</strong> – type of show (movie or TV)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="similarity.compute_votes_similarity">
+<code class="sig-prename descclassname">similarity.</code><code class="sig-name descname">compute_votes_similarity</code><span class="sig-paren">(</span><em class="sig-param">votes_a</em>, <em class="sig-param">votes_b</em><span class="sig-paren">)</span><a class="headerlink" href="#similarity.compute_votes_similarity" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Computes the voting similarity score.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rating_a</strong> – ratings for content a</p></li>
+<li><p><strong>rating_b</strong> – ratings for content b</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="similarity.cross_join">
+<code class="sig-prename descclassname">similarity.</code><code class="sig-name descname">cross_join</code><span class="sig-paren">(</span><em class="sig-param">df1</em>, <em class="sig-param">df2</em><span class="sig-paren">)</span><a class="headerlink" href="#similarity.cross_join" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function performs cross join between two dataframes.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="similarity.get_info">
+<code class="sig-prename descclassname">similarity.</code><code class="sig-name descname">get_info</code><span class="sig-paren">(</span><em class="sig-param">imdb_id: int</em>, <em class="sig-param">df: pandas.core.frame.DataFrame</em>, <em class="sig-param">info: str</em><span class="sig-paren">)</span><a class="headerlink" href="#similarity.get_info" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>This functions returns info (meta data) of an item.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>imdb_id</strong> – int id from imdb</p></li>
+<li><p><strong>df</strong> – dataframe</p></li>
+<li><p><strong>info</strong> – str</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dataframe</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="similarity.get_plot_scores">
+<code class="sig-prename descclassname">similarity.</code><code class="sig-name descname">get_plot_scores</code><span class="sig-paren">(</span><em class="sig-param">starter_meta_df: pandas.core.frame.DataFrame</em>, <em class="sig-param">merged_df: pandas.core.frame.DataFrame</em><span class="sig-paren">)</span><a class="headerlink" href="#similarity.get_plot_scores" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>This function computes the plot scores for recommendation using TFIDF.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>starter_meta_df</strong> – dataframe</p></li>
+<li><p><strong>merged_df</strong> – dataframe</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>float of tfidf scores</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="similarity.get_recommendations_per_persona">
+<code class="sig-prename descclassname">similarity.</code><code class="sig-name descname">get_recommendations_per_persona</code><span class="sig-paren">(</span><em class="sig-param">df: pandas.core.frame.DataFrame</em>, <em class="sig-param">shows: list</em>, <em class="sig-param">top_n=50</em><span class="sig-paren">)</span><a class="headerlink" href="#similarity.get_recommendations_per_persona" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>This function returns recommendations for the persona determined by the questionaire.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> – dataframe</p></li>
+<li><p><strong>shows</strong> – items</p></li>
+<li><p><strong>top_n</strong> – integer for top recs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="similarity.get_recommendations_per_show">
+<code class="sig-prename descclassname">similarity.</code><code class="sig-name descname">get_recommendations_per_show</code><span class="sig-paren">(</span><em class="sig-param">df: pandas.core.frame.DataFrame</em>, <em class="sig-param">show: str</em>, <em class="sig-param">top_n=50</em><span class="sig-paren">)</span><a class="headerlink" href="#similarity.get_recommendations_per_show" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>get the top_n recommendations for a specific item.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> – dataframe</p></li>
+<li><p><strong>show</strong> – items</p></li>
+<li><p><strong>top_n</strong> – integer how many for top contents</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="similarity.get_starter_metadata">
+<code class="sig-prename descclassname">similarity.</code><code class="sig-name descname">get_starter_metadata</code><span class="sig-paren">(</span><em class="sig-param">starter_items: pandas.core.frame.DataFrame</em>, <em class="sig-param">show_type: str</em><span class="sig-paren">)</span><a class="headerlink" href="#similarity.get_starter_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns meta data (fresh from IMDB)
+of the given <cite>starter</cite> items
+INPUTS:
+starter_items:</p>
+<blockquote>
+<div><p>Pandas dataframe of starter items (see test_starter_items.csv)</p>
+</div></blockquote>
+<p>OUTPUTS:
+all_starter_meta_df:</p>
+<blockquote>
+<div><p>Pandas dataframe of metadata, including text e.g. plots</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="similarity.list_to_str">
+<code class="sig-prename descclassname">similarity.</code><code class="sig-name descname">list_to_str</code><span class="sig-paren">(</span><em class="sig-param">plots</em><span class="sig-paren">)</span><a class="headerlink" href="#similarity.list_to_str" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Converts list to strs from the plot.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>plots</strong> – strs</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>strs</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="similarity.load_img_metadata">
+<code class="sig-prename descclassname">similarity.</code><code class="sig-name descname">load_img_metadata</code><span class="sig-paren">(</span><em class="sig-param">meta_df: pandas.core.frame.DataFrame</em>, <em class="sig-param">imgs_df: pandas.core.frame.DataFrame</em><span class="sig-paren">)</span><a class="headerlink" href="#similarity.load_img_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>This function loads the image covers for the movie content.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>meta_df</strong> – dataframe</p></li>
+<li><p><strong>imgs_df</strong> – dataframe</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dataframe</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="similarity.load_plot_metadata">
+<code class="sig-prename descclassname">similarity.</code><code class="sig-name descname">load_plot_metadata</code><span class="sig-paren">(</span><em class="sig-param">meta_df: pandas.core.frame.DataFrame</em>, <em class="sig-param">plots_df: pandas.core.frame.DataFrame</em><span class="sig-paren">)</span><a class="headerlink" href="#similarity.load_plot_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function adds the plots for shows to a metadata frame</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="similarity.preprocess_text">
+<code class="sig-prename descclassname">similarity.</code><code class="sig-name descname">preprocess_text</code><span class="sig-paren">(</span><em class="sig-param">df: pandas.core.frame.DataFrame</em><span class="sig-paren">)</span><a class="headerlink" href="#similarity.preprocess_text" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>This function performs preprocessing on the text data on the plots of each item.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>df</strong> – dataframe</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dataframe</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="similarity.remove_NER">
+<code class="sig-prename descclassname">similarity.</code><code class="sig-name descname">remove_NER</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#similarity.remove_NER" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>This function removes Name Entity from the plots for better recommendations.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> – plot strs</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>filtered plot strs</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-test_cluster_predict_v1"></span><dl class="function">
+<dt id="test_cluster_predict_v1.test_cluster_predict_on_questionare">
+<code class="sig-prename descclassname">test_cluster_predict_v1.</code><code class="sig-name descname">test_cluster_predict_on_questionare</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#test_cluster_predict_v1.test_cluster_predict_on_questionare" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests edge cases
+Tests only work for model v1</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="test_cluster_predict_v1.test_create_dataframe">
+<code class="sig-prename descclassname">test_cluster_predict_v1.</code><code class="sig-name descname">test_create_dataframe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#test_cluster_predict_v1.test_create_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests that input can be created into desired format</p>
+</dd></dl>
+
+<span class="target" id="module-test_guidebox_query"></span><dl class="function">
+<dt id="test_guidebox_query.test_dict_to_df">
+<code class="sig-prename descclassname">test_guidebox_query.</code><code class="sig-name descname">test_dict_to_df</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#test_guidebox_query.test_dict_to_df" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test for turning dict into a dataframe.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="test_guidebox_query.test_merge_platforms">
+<code class="sig-prename descclassname">test_guidebox_query.</code><code class="sig-name descname">test_merge_platforms</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#test_guidebox_query.test_merge_platforms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test the merging of platforms.</p>
+</dd></dl>
+
+<span class="target" id="module-test_imdb_query"></span><dl class="function">
+<dt id="test_imdb_query.get_info">
+<code class="sig-prename descclassname">test_imdb_query.</code><code class="sig-name descname">get_info</code><span class="sig-paren">(</span><em class="sig-param">show_items</em>, <em class="sig-param">info_type</em><span class="sig-paren">)</span><a class="headerlink" href="#test_imdb_query.get_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function to get the required info from IMDB API</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="test_imdb_query.test_movies">
+<code class="sig-prename descclassname">test_imdb_query.</code><code class="sig-name descname">test_movies</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#test_imdb_query.test_movies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test that the IMDB IDs for movie titles have not changed</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="test_imdb_query.test_tv">
+<code class="sig-prename descclassname">test_imdb_query.</code><code class="sig-name descname">test_tv</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#test_imdb_query.test_tv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test that the IMDB IDs for tv shows have not changed</p>
+</dd></dl>
+
+</div>
+
+
+        </div>
+      </div>
+
+      <div id="side-menu-container">
+
+        <div id="search" role="search">
+        <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+            <input type="text" name="q" placeholder="Search..." />
+            <input type="hidden" name="check_keywords" value="yes" />
+            <input type="hidden" name="area" value="default" />
+        </form>
+</div>
+
+        <div id="side-menu" role="navigation">
+
+          
+  
+    
+  
+  
+    <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Stream Hopper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirement.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Team</a></li>
+</ul>
+
+  
+
+
+        </div>
+
+        
+
+      </div>
+
+    </div>
+
+<footer>
+    <div id="footer-info">
+        <ul id="build-details">
+            
+                <li class="footer-element">
+                    
+                        <a href="_sources/code.rst.txt" rel="nofollow"> source</a>
+                    
+                </li>
+            
+
+            
+
+            
+        </ul>
+        <div id="credit">
+            created with <a href="http://sphinx-doc.org/">Sphinx</a> and <a href="https://github.com/Autophagy/insegel">Insegel</a>
+
+        </div>
+    </div>
+
+    <a id="menu-toggle" class="fa fa-bars" aria-hidden="true"></a>
+
+    <script type="text/javascript">
+      $("#menu-toggle").click(function() {
+        $("#menu-toggle").toggleClass("toggled");
+        $("#side-menu-container").slideToggle(300);
+      });
+    </script>
+
+</footer> 
+
+</div>
+
+</body>
+</html>

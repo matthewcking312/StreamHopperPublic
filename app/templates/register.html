@@ -1,0 +1,131 @@
+{% from "_render_field.html" import render_field %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% include "ga.html" %}
+	<title>StreamHopper</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="img/favicon.ico" rel="shortcut icon"/>
+<!--===============================================================================================-->
+<!-- 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='login_vendor/bootstrap/css/bootstrap.min.css')}}"> -->
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/login_util.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/login_main.css')}}">
+<!--===============================================================================================-->
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}"/>
+	<link rel="stylesheet" href="{{url_for('static', filename='css/font-awesome.min.css')}}"/>
+	<link rel="stylesheet" href="{{url_for('static', filename='css/flaticon.css')}}"/>
+	<link rel="stylesheet" href="{{url_for('static', filename='css/owl.carousel.min.css')}}"/>
+	<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}"/>
+
+</head>
+<body>
+<!-- Header section -->
+	<div class="navbar navbar-expand-lg navbar-light">
+			<a class="navbar-brand" href="/">
+					<img src={{ url_for('static',filename='sh_img/logo_small.png') }} height="75">
+			</a>
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" color='#00953E'>
+					<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item ">
+							<a class="nav-link" href="/">Back to Home</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="/login">Login</a>
+						</li>
+
+					</ul>
+			</div>
+	</div>
+
+	<!-- <header class="header-section">
+		<a href="index" class="site-logo"><img src="{{url_for('static', filename='sh_img/logo_small.png')}}" alt=""></a>
+		<div class="nav-switch">
+			<i class="fa fa-bars"></i>
+		</div>
+		<div class="nav-warp">
+			<div class="user-panel">
+				<a href="index">Back to Home</a> /
+				<a href="login">Login</a>
+			</div>
+		</div>
+	</header> -->
+
+
+<!--   <section class="page-top-section set-bg" data-setbg="{{url_for('static', filename='img/page-top-bg.jpg')}}">
+    <div class="container">
+      <h2>Register</h2>
+      <div class="site-breadcrumb">
+        <a href="home">Home</a> / <span>About us</span>
+      </div>
+    </div>
+  </section> -->
+
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 p-t-85 p-b-20">
+				<form method='POST'>
+					{{ form.csrf_token}}
+					<span class="login100-form-title p-b-50">
+						Register
+					</span>
+					<div>
+						<img src="{{url_for('static', filename='sh_img/girl_boy.png')}}" alt="">
+					</div>
+<!-- 					<span class="login100-form-avatar">
+						<img src="{{url_for('static', filename='sh_img/IMG_9485.jpg')}}" alt="AVATAR"></a>
+					</span> -->
+					<br>
+					{% include 'flash.html' %}
+					<br>
+					<br>
+					{{ render_field(form.username, placeholder=form.username.label.text)}}
+					<br>
+					{{ render_field(form.email, placeholder=form.email.label.text)}}
+					<br>
+					{{ render_field(form.password, placeholder=form.password.label.text)}}
+       				<br>
+       				<br>
+					<div class="container-login100-form-btn">
+						<input class="login100-form-btn" type="submit" value={{form.submit.label.text}}>
+					</div>
+				</form>
+<!-- 					 <ul class="login-more p-t-30">
+						<li class="m-b-8">
+							<span class="txt1">
+								Forgot
+							</span>
+
+							<a href="#" class="txt2">
+								Username / Password?
+							</a>
+						</li>
+
+						<li>
+							<span class="txt1">
+								Don’t have an account?
+							</span>
+
+							<a href="#" class="txt2">
+								Sign up
+							</a>
+						</li>
+					</ul> -->
+			</div>
+		</div>
+	</div>
+</body>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+</html>

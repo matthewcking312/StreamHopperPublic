@@ -1,0 +1,10 @@
+Requirements
+============
+
+| To use our API, copy and paste the requirements shown down below into a text file and call it **requirements.txt**.
+|
+.. literalinclude:: ../requirements.txt
+|
+| run **pip install -r requirements.txt**
+|
+| You are good to go! See our API page for usage.

@@ -1,0 +1,26 @@
+Team
+====
+
+| This product was brought to you by a group of MSDS Students at the University of San Francisco trying *optimize* spendings on streaming services.
+|
+**Founding Members**
+
+* Shane Buchanan
+* Lisa Chua
+* Matthew C. King
+* Alaa A. Latif
+* Hoda Noorian
+* Nicholas Parker
+* Dillon Quan
+* Sean Sturtevant
+* Shrikar Thodla
+
+**Advisors**
+
+We would like to extend our appreciation to our advisors Diane and Nick.
+
+.. image:: ../../images/nad.png
+|
+|
+| If you like and enjoy the product or have any feedback on improvement, be sure to make leave a comment and reach out to us via email *StreamHopper@gmail.com*
+

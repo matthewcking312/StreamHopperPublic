@@ -1,0 +1,99 @@
+{% extends "bootstrap/base.html" %}
+
+{% block head %}
+{{ super() }}
+{% include "ga.html" %}
+{% endblock %}
+
+
+{% block content %}
+<style>
+    .platform {
+        size: 20px;
+        border-radius: 5%;
+    }
+</style>
+
+<!-- Stylesheets -->
+<link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}" />
+<link rel="stylesheet" href="{{url_for('static', filename='css/font-awesome.min.css')}}" />
+<link rel="stylesheet" href="{{url_for('static', filename='css/flaticon.css')}}" />
+<link rel="stylesheet" href="{{url_for('static', filename='css/owl.carousel.min.css')}}" />
+<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" />
+<link rel="stylesheet" href="{{url_for('static', filename='css/user_dashboard.css')}}" />
+
+
+<body>
+
+  <!-- Page Preloder -->
+	<!-- <div id="preloder">
+		<div class="loader"></div>
+	</div> -->
+
+	<!-- Header section -->
+	{% include "navbar.html" %}
+	<!-- Header section end -->
+
+    <div class="container">
+        <div>
+            <br>
+            <h3>Search our database</h3>
+            <br>
+
+            <input id="searchtitle" class="form-control mr-sm-2" type="text" placeholder="Movie or TV Show title"
+                aria-label="Search">
+            <br>
+            <button class="btn btn-outline-success btn-rounded btn-sm my-0 waves-effect waves-light" type="submit"
+                onclick="search(); gtag('event', 'click', {'event_category':'search_again', 'event_label':'search_again', value:10});" id="searchbutton">Search</button>
+        </div>
+        <div class="tablediv">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Service</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Service</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in range(content | length) %}
+                    <tr>
+                        <td><img src="{{ content[i][4] }}"></td>
+                        <td>{{ content[i][0] }}</td>
+                        <td>{{ content[i][1] }}</td>
+                        <td>{{ content[i][2] }}</td>
+                        <td><img class="platform" src="{{ content[i][3] }}"></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+<!--====== Javascripts & Jquery ======-->
+<script>
+    function search() {
+        var x = $("input:text").val()
+        document.getElementById("searchtitle").innerHTML = x;
+        console.log('/search_result?title=' + x)
+        window.location.href = '/search_result?title=' + x;
+    };
+
+    var search_input = document.getElementById("searchtitle");
+    search_input.addEventListener("keyup", function(event) {
+        // This function will trigger the "search" button if the user presses the enter button
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            document.getElementById("searchbutton").click();
+        }
+    });
+</script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+    integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+    crossorigin="anonymous"></script> -->
+<script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+{% endblock %}

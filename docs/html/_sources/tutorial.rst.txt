@@ -1,0 +1,16 @@
+Quick Start
+===========
+
+**Follow these steps to find which streaming service is right for you!**
+
+* Sign up if new to the service.
+
+.. image:: ../../images/register.png
+
+* Answer a few questions for us to determine your persona.
+
+.. image:: ../../images/question.png
+
+* See which streaming services contain contents that you'll like.
+
+.. image:: ../../images/rec.png

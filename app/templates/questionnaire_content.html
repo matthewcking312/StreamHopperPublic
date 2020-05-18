@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<style type="text/css">
+
+.image {
+    width: 100px;
+    height: 175px;
+    border-radius: 8%;
+    padding: 4px 4px;
+}
+
+.image:hover {
+    border: 3px solid red;
+}
+
+.clicked {
+    opacity: 0.25;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5); /* Black see-through */
+    color: #f1f1f1;
+    width: 100%;
+    transition: .5s ease;
+    opacity:0;
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* .row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+    flex: 1
+} */
+
+.imagematrix {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+/* .imagematrix::after {
+  content: "";
+  flex: auto;
+} */
+
+.action {
+    position: relative;
+    left: 50%;
+}
+
+.action button {
+    width: 125px;
+    height: 75px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 20px;
+    justify-content: center;
+    border-radius: 30%;
+}
+
+.action button:hover {
+    background-color: #4CAF50;
+    opacity: 0.6;
+    border: white;
+}
+
+.container {
+    justify-content: center;
+}
+
+</style>
+<link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}" />
+<link rel="stylesheet" href="{{url_for('static', filename='css/font-awesome.min.css')}}" />
+<link rel="stylesheet" href="{{url_for('static', filename='css/flaticon.css')}}" />
+<link rel="stylesheet" href="{{url_for('static', filename='css/owl.carousel.min.css')}}" />
+<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" />
+<link rel="stylesheet" href="{{url_for('static', filename='css/user_dashboard.css')}}" />
+
+
+<head>
+    {% include "ga.html" %}
+    <title>Favorite Movies & Shows</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        var movies = new Set();
+        var shows = new Set();
+
+        function imageClicked(type) {
+                var img_id = event.srcElement.id;
+                var element = document.getElementById(img_id);
+                // var over_element = document.querySelectorAll("div."+img_id)
+                console.log(img_id);
+
+                if (type == 'movies') {
+                    if (movies.size < 3 && !movies.has(img_id)) {
+                        element.classList.add("clicked");
+                        // over_element.classList.add("overlay")
+                        add_element(img_id, movies);
+                    }
+                    else if (movies.has(img_id)) {
+                        element.classList.remove("clicked");
+                        movies.delete(img_id);
+                    }
+                }
+                else {
+                    if (shows.size < 3 && !shows.has(img_id)) {
+                        element.classList.add("clicked");
+                        // over_element.classList.add("overlay")
+                        add_element(img_id, shows);
+                    }
+                    else if (shows.has(img_id)) {
+                        element.classList.remove("clicked");
+                        shows.delete(img_id);
+                    }
+                }
+            };
+
+        function add_element(element, set) {
+            if (set.size < 5) {
+                set.add(element);
+            }
+            else {
+                window.alert("Error! You have selected too many movies!!")
+            }
+            return set
+        };
+
+
+        function submit() {
+            if (movies.size + shows.size < 6) {
+                window.alert("Select more movies!!")
+            }
+            else {
+
+                var movie_list = Array.from(movies).join();
+                var shows_list = Array.from(shows).join();
+                // var content_list = Array.from(movies).concat(Array.from(shows)).join();
+                var dat = JSON.stringify( {"movies": movie_list, "shows": shows_list});
+                var posting = $.post("/update_content", dat);
+
+                posting.done(function() {
+                    window.location.href = '/dashboard';
+                });
+                // the following will ensure that the page doesn't move when the click is executed
+                return false;
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="cards">
+            <h3>Favorite Movies</h3>
+            <p>Please select 3 of your top choices from the following movies:</p>
+            <div class="imagematrix">
+                <div class="row">
+                {% for i in range(movie_list| length) %} <div class="{{movie_list[i][0]}}"><img id="{{movie_list[i][0]}}" class="image" src={{movie_list[i][1]}} onclick='imageClicked("movies")' /> </div>{% endfor %}
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="cards">
+            <h3>Favorite TV Shows</h3>
+            <p>Please select 3 of your top choices from the following television shows:</p>
+            <div class="imagematrix">
+                <div class="row">
+                    {% for i in range(tv_list | length) %} <div class="{{tv_list[i][0]}}"><img id="{{tv_list[i][0]}}"
+                            class="image" src={{tv_list[i][1]}} onclick='imageClicked("shows")' /> </div>{% endfor %}
+                </div>
+            </div>
+        </div>
+        <br>
+        <div>
+            <a href="#" onclick="submit()" class="action" id="submit"><button>Submit</button></a>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+</body>
+
+</html>

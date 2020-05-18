@@ -1,0 +1,69 @@
+{
+    "pipeline": {
+        "name": "StreamHopper_Pipeline",
+        "version": 1,
+        "roleArn": "User_ARN",
+        "artifactStore": {
+          "type": "S3",
+          "location": "streamhopper"
+        },
+        "stages": [
+            {
+                "name": "Source",
+                "actions": [
+                    {
+                        "name" : "GitHubSource",
+                        "inputArtifacts": [],
+                        "actionTypeId": {
+                            "version": "1",
+                            "owner": "ThirdParty",
+                            "category": "Source",
+                            "provider": "GitHub"
+                        },
+                        "outputArtifacts": [
+                            {
+                                "name": "SourceArtifact"
+                            }
+                        ],
+                        "runOrder": 1,
+                        "configuration": {
+                          "Owner": "Username",
+                          "Repo": "RepoName",
+                          "PollForSourceChanges": "true",
+                          "Branch": "master",
+                          "OAuthToken": "OAuth Token"
+                        }
+                    }
+                ]
+            },
+
+            {
+              "name": "Deploy",
+              "actions": [
+                {
+                  "inputArtifacts": [
+                    {
+                      "name": "SourceArtifact"
+                    }
+                  ],
+                  "name": "CodeDeploy",
+                  "actionTypeId": {
+                    "category": "Deploy",
+                    "owner": "AWS",
+                    "version": "1",
+                    "provider": "ElasticBeanstalk"
+                  },
+                  "outputArtifacts": [
+
+                        ],
+                  "configuration": {
+                    "ApplicationName": "StreamHopper",
+                    "EnvironmentName": "StreamHopper-App"
+                  },
+                  "runOrder": 2
+                }
+              ]
+            }
+        ]
+    }
+}

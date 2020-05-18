@@ -1,0 +1,55 @@
+DATA DICTIONARY
+
+Here is the data dictionary for the StreamHopper database. This includes a description of all tables in the database with their column names.
+If you would like any changes to be made, please let Sean, Dillon, or myself know.
+
+Host URL: stream.csgvua23atk1.us-west-2.rds.amazonaws.com
+DB Name: postgres
+
+Schemas & Tables:
+
+Schema: public
+    Tables:
+          -user
+              Columns: id, username, email, password_hash
+          -questionnaire
+              Columns: id, username, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13
+Schema: tv
+    Tables:
+          -shows
+              Columns: title, first_aired, id, imdb_id, themoviedb, wikipedia_id, platform
+          -image
+              Columns: imdb_id, full_cover_url, cover_url
+          -producer
+              Columns: id, name
+          -stars
+              Columns: id, name
+          -text
+              Columns: id, outline, plot
+          -writer
+              Columns: id, name
+          -meta
+              Columns: id, title, years, casts, writers, producers, genres, kind, seasons, runtimes, series_years, rating, votes
+
+Schema: movie
+    Tables:
+          -stars
+              Columns: imdb_id, name
+          -cast
+              Columns: imdb_id, name
+          -composers
+              Columns: imdb_id, name
+          -directors
+              Columns: imdb_id, name
+          -images
+              Columns: imdb_id, full_cover_url, cover_url
+          -producers
+              Columns: imdb_id, name
+          -movies
+              Columns: title, release_date, id, imdb_id, themoviedb, wikipedia_id, rottentomatoes, metacritic, platform, kind
+          -text
+              Columns: imdb_id, outline, synopsis, plot
+          -writers
+              Columns: imdb_id, name
+          -meta
+              Columns: imdb_id, title, year, movie_cast, writers, directors, casting_directors, producers, composers, genres, kind, runtimes, rating, votes, box_office

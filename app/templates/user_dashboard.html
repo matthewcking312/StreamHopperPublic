@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<style type="text/css">
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-grow:1;
+}
+
+.movieimage{
+    display:block;
+    width:100%;
+}
+
+.caption{
+    display:lock;
+    text-align:center;
+}
+.column {
+  flex: 50%%;
+  padding: 5px;
+}
+/*.movieposter{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}*/
+
+</style>
+
+<head>
+    {% include "ga.html" %}
+    <title>StreamHopper - User Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="img/favicon.ico" rel="shortcut icon"/>
+<!--===============================================================================================-->
+<!--    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='login_vendor/bootstrap/css/bootstrap.min.css')}}"> -->
+<!--===============================================================================================-->
+<!--     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/login_util.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/login_main.css')}}"> -->
+<!--===============================================================================================-->
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/font-awesome.min.css')}}"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/flaticon.css')}}"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/owl.carousel.min.css')}}"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/user_dashboard.css')}}"/>
+
+    <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+    <!-- Page Preloder -->
+<!--     <div id="preloder">
+        <div class="loader"></div>
+    </div> -->
+
+    <!-- Header section -->
+    {% include "navbar.html" %}
+    <!-- Header section end -->
+
+
+    <!-- Hero section -->
+<!--     <section class="hero-section set-bg" data-setbg="{{url_for('static', filename='sh_img/Homepage-background.jpg')}}">
+        <div class="container h-20">
+            <div class="hero-content text-white">
+                <div class="row">
+                    <div class="col-lg-6 pr-0">
+                        <h2>Welcome {{user.username}}!</h2>
+                        <a href="#" class="site-btn">Get your plan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <!-- Hero section end -->
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        <div class="avatar">
+            <img src="{{url_for('static', filename='sh_img/generic_user_img.png')}}" alt="Avatar"> <h2>Welcome, {{user.username}}!</h2>
+        </div>
+        <div class="row">
+<!--             <div class="col-md-8">  -->
+            <div class="col-lg-30">
+                <div class="tab" role="tabpanel">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#Section1" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-user"></i>Recommendation</a></li>
+                        <li role="presentation"><a href="#Section2" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-television"></i>Profile</a></li>
+                        <li role="presentation"><a href="#Section3" aria-controls="messages" role="tab" data-toggle="tab"><i class="fa fa-search"></i>Search</a></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content tabs">
+                        <div role="tabpanel" class="tab-pane fade show active" id="Section1">
+                            <br>
+                            <h3>My Recommendation</h3>
+                            <p> Check out your recommendation for this month! </p>
+                            <div class="col-lg-8 col-md-8 offset-md-2 offset-lg-0">
+                                <div class="pricing-plan gold-plan">
+                                    <div class="pricing-title">
+<!--                                         <h4>{{service}}</h4> -->
+                                        <img src={{service_logo}}>
+                                    </div>
+                                    <div class="pricing-body">
+                                        <h2>{{price}}<span>/Month</span></h2>
+<!--                                         <ul>
+                                            <li>{{rec_movie1}}</li>
+                                            <li>{{rec_movie2}}</li>
+                                            <li>{{rec_show1}}</li>
+                                            <li>{{rec_show2}}</li>
+                                        </ul> -->
+                                            <div class="row justify-content-center">
+                                              <div class="column">
+                                                <div class="movieimage">
+                                                    <img src={{rec_movie1_image}}>
+                                                    <div class="caption">{{rec_movie1}}</div>
+                                                </div>
+                                              </div>
+                                              <div class="column">
+                                                <div class="movieimage">
+                                                    <img src={{rec_movie2_image}}>
+                                                    <div class="caption">{{rec_movie2}}</div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="row justify-content-center">
+                                              <div class="column">
+                                                <div class="movieimage">
+                                                    <img src={{rec_show1_image}}>
+                                                    <div class="caption">{{rec_show1}}</div>
+                                                </div>
+                                              </div>
+                                              <div class="column">
+                                                <div class="movieimage">
+                                                    <img src={{rec_show2_image}}>
+                                                    <div class="caption">{{rec_show2}}</div>
+                                                </div>
+                                              </div>
+                                            </div>
+
+<!--                                             <div class="row justify-content-center">
+                                              <div class="column">
+                                                <img src={{rec_show1_image}} style="width:100%">{{rec_show1}}
+                                              </div>
+                                              <div class="column">
+                                                <img src={{rec_show2_image}} style="width:100%">{{rec_show2}}
+                                              </div>
+                                            </div> -->
+<!--                                         </div>    -->
+                                        <br>
+                                        <br>
+                                        <a href="{{service_url}}" class="site-btn">Get Plan</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade show" id="Section2">
+                            <br>
+                            <h3>My Profile</h3>
+                            <br>
+                                <div class="page-content">
+                                <div class="wizard-v10-content">
+                                <!-- SECTION 1 -->
+                                    <div class="form-row">
+                                    <label for="comment"><b>You currently subscribe to : </b></label>
+
+                                        {% if 'v1' in q.q1 %}
+                                            Amazon
+                                        {% endif %}
+                                        {% if 'v2' in q.q1 %}
+                                            Hulu
+                                        {% endif %}
+                                        {% if 'v3' in q.q1 %}
+                                            Netflix
+                                        {% endif %}
+                                        {% if 'v4' in q.q1 %}
+                                            HBO
+                                        {% endif %}
+                                        {% if 'v5' in q.q1 %}
+                                            Disney
+                                        {% endif %}
+
+                                    </div>
+                                    <br>
+                                <!-- SECTION 2 -->
+                                    <div class="form-row">
+                                        <label for="first-name"><b>You prefer watching : </b></label>
+
+                                            {% if q.q2|string()=='v1' %}
+                                                Movies
+                                            {% elif q.q2|string()=='v2' %}
+                                                TV Shows
+                                            {% endif %}
+
+                                    </div>
+                                    <br>
+                                    <div class="form-row">
+                                        <label for="first-name"><b>You usually watch shows with : </b></label>
+
+                                            {% if q.q10|string()=='v1' %}
+                                                Friends
+                                            {% elif q.q10|string()=='v2' %}
+                                                Solo
+                                            {% elif q.q10|string()=='v3' %}
+                                                kids
+                                            {% elif q.q10|string()=='v4' %}
+                                                Significant Other
+                                            {% endif %}
+
+                                    </div>
+                                    <br>
+                                <!-- SECTION 3 -->
+                                    <div class="form-row">
+                                    <label for="comment"><b>Age : </b></label> {{ q.q6 }}
+                                    </div>
+                                    <br>
+                                    <div class="form-row">
+                                        <label for="first-name"><b>Relationship status : </b></label>
+
+                                            {% if q.q4|string()=='v1' %}
+                                                Single
+                                            {% elif q.q4|string() =='v2' %}
+                                                Married
+                                            {% elif q.q4|string() =='v3' %}
+                                                In a Relationship
+                                            {% elif q.q4|string() =='v4' %}
+                                                It's Complicated
+                                            {% endif %}
+
+                                    </div>
+                                    <br>
+                                    <div class="form-row">
+                                        <label for="first-name"><b>Gender : </b></label>
+                                            {% if q.q5|string()=='v1' %}
+                                                Male
+                                            {% elif q.q5|string()=='v2' %}
+                                                Female
+                                            {% elif q.q5|string()=='v3' %}
+                                                Other
+                                            {% endif %}
+                                    </div>
+                                    <br>
+                                    <div class="form-row">
+                                        <label for="first-name"><b>Region : </b></label>
+                                            {% if q.q11|string()=='v1' %}
+                                                Northeast
+                                            {% elif q.q11|string()=='v2' %}
+                                                Midwest
+                                            {% elif q.q11|string()=='v3' %}
+                                                South
+                                            {% elif q.q11|string()=='v4' %}
+                                                West
+                                            {% endif %}
+                                    </div>
+                                    <br>
+                                <!-- SECTION 4 -->
+                                    <div class="form-row">
+                                        <label for="first-name"><b>Your 3 most favorite genres : </b></label>
+
+                                            {% if 'v1' in q.q7 %}
+                                                Action
+                                            {% endif %}
+                                            {% if 'v2' in q.q7 %}
+                                                Animation
+                                            {% endif %}
+                                            {% if 'v3' in q.q7 %}
+                                                Comedy
+                                            {% endif %}
+                                            {% if 'v4' in q.q7 %}
+                                                Documentary
+                                            {% endif %}
+                                            {% if 'v5' in q.q7 %}
+                                                Drama
+                                            {% endif %}
+                                            {% if 'v6' in q.q7 %}
+                                                Fantasy
+                                            {% endif %}
+                                            {% if 'v7' in q.q7 %}
+                                                Horror
+                                            {% endif %}
+                                            {% if 'v8' in q.q7 %}
+                                                Romance
+                                            {% endif %}
+                                            {% if 'v9' in q.q7 %}
+                                                Science Fiction
+                                            {% endif %}
+                                            {% if 'v10' in q.q7 %}
+                                                Thriller
+                                            {% endif %}
+
+                                    </div>
+                                    <br>
+                                    <div class="form-row">
+                                        <label for="first-name"><b>Your 3 least favorite genres : </b></label>
+                                            {% if 'v1' in q.q8 %}
+                                                Action
+                                            {% endif %}
+                                            {% if 'v2' in q.q8 %}
+                                                Animation
+                                            {% endif %}
+                                            {% if 'v3' in q.q8 %}
+                                                Comedy
+                                            {% endif %}
+                                            {% if 'v4' in q.q8 %}
+                                                Documentary
+                                            {% endif %}
+                                            {% if 'v5' in q.q8 %}
+                                                Drama
+                                            {% endif %}
+                                            {% if 'v6' in q.q8 %}
+                                                Fantasy
+                                            {% endif %}
+                                            {% if 'v7' in q.q8 %}
+                                                Horror
+                                            {% endif %}
+                                            {% if 'v8' in q.q8 %}
+                                                Romance
+                                            {% endif %}
+                                            {% if 'v9' in q.q8 %}
+                                                Science Fiction
+                                            {% endif %}
+                                            {% if 'v10' in q.q8 %}
+                                                Thriller
+                                            {% endif %}
+                                    </div>
+                                </div>
+                                <br>
+                                <a href="questionnaire" class="site-btn">Edit Your Answers</a>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade show" id="Section3">
+                            <br>
+                            <h3>Search our database</h3>
+                            <br>
+
+                            <input id="searchtitle" class="form-control mr-sm-2" type="text" placeholder="Movie or TV Show title"
+                                aria-label="Search">
+                            <br>
+                            <button class="btn btn-outline-success btn-rounded btn-sm my-0 waves-effect waves-light" type="submit" id="searchbutton"
+                                onclick="search(); gtag('event', 'click', {'event_category':'search', 'event_label':'search_button', value:1});">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--====== Javascripts & Jquery ======-->
+    <script>
+        function search() {
+            var x = $("input:text").val()
+            document.getElementById("searchtitle").innerHTML = x;
+            console.log('/search_result?title=' + x)
+            window.location.href = '/search_result?title=' + x;
+        };
+
+        var search_input = document.getElementById("searchtitle");
+        search_input.addEventListener("keyup", function (event) {
+            // This function will trigger the "search" button if the user presses the enter button
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                document.getElementById("searchbutton").click();
+            }
+        });
+    </script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+</body>
+</html>

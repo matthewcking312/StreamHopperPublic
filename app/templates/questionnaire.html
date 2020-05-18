@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% include "ga.html" %}
+	<meta charset="utf-8">
+	<title>StreamHopper- Questionnaire</title>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/questionnaire_montserrat-font.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/material-design-iconic-font.min.css')}}">
+	<!-- Main Style Css -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/questionnaire_style.css')}}"/>
+    <!-- Theme Stylesheets -->
+	<link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}"/>
+	<link rel="stylesheet" href="{{url_for('static', filename='css/font-awesome.min.css')}}"/>
+	<link rel="stylesheet" href="{{url_for('static', filename='css/flaticon.css')}}"/>
+	<link rel="stylesheet" href="{{url_for('static', filename='css/owl.carousel.min.css')}}"/>
+	<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}"/>
+</head>
+<body>
+<!-- Header section -->
+	<header class="header-section">
+		<a href="index" class="site-logo"><img src="{{url_for('static', filename='sh_img/logo_small.png')}}" alt=""></a>
+		<div class="nav-switch">
+			<i class="fa fa-bars"></i>
+		</div>
+		<div class="nav-warp">
+			<div class="user-panel">
+				<a href="index">Cancel</a>
+			</div>
+			<!-- <ul class="main-menu">
+				<li><a href="index">Home</a></li>
+				<li><a href="about">About us</a></li>
+				<li><a href="service">Services</a></li>
+				<li><a href="./blog.html">News</a></li>
+				<li><a href="contact">Contact</a></li>
+			</ul> -->
+		</div>
+	</header>
+<!-- 	<div class="page-content" style="background-image: url('images/wizard-v10-bg.jpg')"> -->
+	<div class="page-content">
+		<div class="wizard-v10-content">
+			<div class="wizard-form">
+				<div class="wizard-header">
+					<h3>Tell us about yourself</h3>
+				</div>
+		        <form class="form-register" action="#" method="post">
+		        	<div id="form-total">
+		        	<form method="POST" enctype="multipart/form-data">
+		        	{{ form.csrf_token }}
+		        		<!-- SECTION 1 -->
+			            <h2>1</h2>
+			            <section>
+			                <div class="inner">
+								<div class="form-row">
+										<label for="comment"><b>Which streaming platform(s) do you currently subscribe to?</b></label>
+								</div>
+								<div class="form-row">
+                    					{{ form.q1() }}
+								</div>
+							</div>
+			            </section>
+						<!-- SECTION 2 -->
+			            <h2>2</h2>
+			            <section>
+			                <div class="inner">
+                    			<div class="form-row">
+										<label for="first-name"><b>Do you prefer watching movies or TV shows?</b></label>
+								</div>
+								<div class="form-row">
+                    					{{ form.q2() }}
+								</div>
+								<br>
+								<div class="form-row">
+										<label for="first-name"><b>How many hours do you spend watching movies or TV shows, per week?</b></label>
+								</div>
+								<div class="form-row">
+                    					{{ form.q3() }}
+								</div>
+								<br>
+								<div class="form-row">
+										<label for="first-name"><b>Who do you usually watch shows with?</b></label>
+								</div>
+								<div class="form-row">
+                    					{{ form.q10() }}
+								</div>
+								<br>
+								<div class="form-row">
+										<label for="first-name"><b>How often do you watch shows or movies in languages other than English?</b></label>
+								</div>
+								<div class="form-row">
+                    					{{ form.q12() }}
+								</div>
+							</div>
+			            </section>
+			            <!-- SECTION 3 -->
+			            <h2>3</h2>
+			            <section>
+			                <div class="inner">
+			                	<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<label for="comment">How old are you?</label>
+										{{ form.q6() }}
+									</div>
+								</div>
+								<br>
+			                	<div class="form-row">
+										<label for="first-name"><b>What's your relationship status?</b></label>
+								</div>
+								<div class="form-row">
+                    					{{ form.q4() }}
+								</div>
+								<br>
+								<div class="form-row">
+										<label for="first-name"><b>What do you identify as?</b></label>
+								</div>
+								<div class="form-row">
+                    					{{ form.q5() }}
+								</div>
+								<br>
+								<div class="form-row">
+										<label for="first-name"><b>What region of the United States do you live in?</b></label>
+								</div>
+								<div class="form-row">
+                    					{{ form.q11() }}
+								</div>
+								<br>
+								<div class="form-row">
+										<label for="first-name"><b>Are you currently enrolled at a University?</b></label>
+								</div>
+								<div class="form-row">
+                    					{{ form.q13() }}
+								</div>
+							</div>
+			            </section>
+			            <!-- SECTION 4 -->
+			            <h2>4</h2>
+			            <section>
+			                <div class="inner">
+								<div class="form-row">
+										<label for="first-name"><b>What are your 3 <u>most</u> favorite genres?</b></label>
+								</div>
+								<div class="form-row">
+                    					{{ form.q7() }}
+								</div>
+								<br>
+								<div class="form-row">
+										<label for="first-name"><b>What are your 3 <u>least</u> favorite genres?</b></label>
+								</div>
+								<div class="form-row">
+                    					{{ form.q8() }}
+								</div>
+							</div>
+			            </section>
+			            <!-- SECTION 5 -->
+			            <h2>5</h2>
+			            <section>
+			                <div class="inner">
+								<div class="form-row">
+										<label for="first-name"><b>Of these weekend activities, which one sounds the most appealing?</b></label>
+								</div>
+								<div class="form-row">
+                    					{{ form.q9() }}
+								</div>
+								{{ form.submit(class_="site-submit-btn") }}
+							</div>
+			            </section>
+		        	</div>
+		        </form>
+			</div>
+		</div>
+	</div>
+	<script src="../static/js/questionnaire_jquery-3.3.1.min.js"></script>
+	<script src="../static/js/questionnaire_jquery.steps.js"></script>
+	<script src="../static/js/questionnaire_main.js"></script>
+</body>
+</html>

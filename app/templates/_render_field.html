@@ -1,0 +1,5 @@
+{% macro render_field(field) %}
+<div class="wrap-input100">
+	{{ field(_class='form-control', **kwargs)|safe }}
+</div>
+{% endmacro %}

@@ -1,0 +1,38 @@
+Stream Hopper
+=============
+
+.. automodule:: cluster_predict_v1
+    :members:
+    :undoc-members:
+
+.. automodule:: cluster_predict_v2
+    :members:
+    :undoc-members:
+
+.. automodule:: guidebox_query
+    :members:
+    :undoc-members:
+
+.. automodule:: imdb_query
+    :members:
+    :undoc-members:
+
+.. automodule:: search
+    :members:
+    :undoc-members:
+
+.. automodule:: similarity
+    :members:
+    :undoc-members:
+
+.. automodule:: test_cluster_predict_v1
+    :members:
+    :undoc-members:
+
+.. automodule:: test_guidebox_query
+    :members:
+    :undoc-members:
+
+.. automodule:: test_imdb_query
+    :members:
+    :undoc-members:
