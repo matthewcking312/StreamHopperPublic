@@ -1,5 +1,5 @@
 <p align = 'center'>
-  <img src=srthop_logo.png width = 450>
+  <img src=srthop_logo.png width = 700>
   </p>
 
 # Check out our product!
