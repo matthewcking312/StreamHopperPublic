@@ -1,6 +1,16 @@
 # 2020-product-analytics-group-Stream-Hopper
-2020-product-analytics-group-project-Stream-Hopper created by GitHub Classroom
+2020-product-analytics-group-project-Stream-Hopper
 
+## Founding Members:
+- Nick Parker
+- Shane Buchanan
+- Al A Latif
+- Matthew King
+- Sean Sturtevant
+- Hoda Noorian
+- Dillon Quan
+- Lisa Chua
+- Shrikar Thodla
 Stream Hopper
 | Check out the documentation page [here](https://msds698.github.io/2020-product-analytics-group-project-group1/)
 
@@ -54,16 +64,6 @@ pip freeze > requirements.txt
 ![KERNEL](figs/venv_kernel.png)
 
 
-## Founding Members:
-- Nick Parker
-- Shane Buchanan
-- Al A Latif
-- Matthew King
-- Sean Sturtevant
-- Hoda Noorian
-- Dillon Quan
-- Lisa Chua
-- Shrikar Thodla
 
 This repo is where the first code for our wonderful idea will go. We will subdivide into teams, departments, projects, etc as we grow.
 
