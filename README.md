@@ -14,9 +14,9 @@
 Check out the documentation page [here](https://msds698.github.io/2020-product-analytics-group-project-group1/)
 
 ## Founding Members:
-- Nick Parker
+- Nicholas Parker
 - Shane Buchanan
-- Al A Latif
+- Alaa A Latif
 - Matthew King
 - Sean Sturtevant
 - Hoda Noorian
