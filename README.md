@@ -1,3 +1,7 @@
+<p align = 'center'>
+  <img src=srthop_logo.png width = 450>
+  </p>
+
 # Check out our product!
 
 # [Stream Hopper Site](http://www.streamhopper.video/) <---- Get your recommendation now!
