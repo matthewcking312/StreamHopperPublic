@@ -11,6 +11,9 @@
 - Dillon Quan
 - Lisa Chua
 - Shrikar Thodla
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/n6VAeDgY7sI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 Stream Hopper
 | Check out the documentation page [here](https://msds698.github.io/2020-product-analytics-group-project-group1/)
 
