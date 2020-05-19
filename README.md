@@ -3,6 +3,7 @@
   </p>
 
 # Check out our product!
+<center> <h1>Check out our product! 1</h1> </center>
 
 # [Stream Hopper Site](http://www.streamhopper.video/) <---- Get your recommendation now!
 
