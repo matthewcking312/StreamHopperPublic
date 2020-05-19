@@ -2,9 +2,15 @@
   <img src=srthop_logo.png width = 700>
   </p>
 
-<h1 align = 'center'>Check out our product!</h1>
+<h1 align = 'center'><b>Check out our product!</b></h1>
 
 # [Stream Hopper Site](http://www.streamhopper.video/) <---- Get your recommendation now!
+
+<h1 align = 'center'><u>Videos:</u></h1>
+
+<h1 align = 'center'><a href="https://youtu.be/LxyyNk5sFxc">Stream Hopper Pitch</a></h1>
+
+
 
 # [Stream Hopper Pitch](https://youtu.be/LxyyNk5sFxc)
 
