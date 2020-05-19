@@ -15,13 +15,8 @@
 
 Check out the documentation page [here](https://msds698.github.io/2020-product-analytics-group-project-group1/)
 
-## Founding Members:
-- Nicholas Parker
-- Shane Buchanan
-- Alaa A Latif
-- Matthew King
-- Sean Sturtevant
-- Hoda Noorian
-- Dillon Quan
-- Lisa Chua
-- Shrikar Thodla
+<h1 align = 'center'><b>Founding Members:</b></h1>
+
+<p align = 'center'>
+  <img src=founding_members.png width = 700>
+  </p>
