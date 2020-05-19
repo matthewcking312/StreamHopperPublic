@@ -12,9 +12,9 @@
 - Lisa Chua
 - Shrikar Thodla
 
-<p>
-<iframe src="https://www.youtube.com/embed/n6VAeDgY7sI"></iframe>
-</p>
+# [Stream Hopper Pitch](https://youtu.be/LxyyNk5sFxc)
+
+# [Stream Hopper Advertisement](https://youtu.be/n6VAeDgY7sI)
 
 
 Stream Hopper
