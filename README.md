@@ -1,4 +1,3 @@
-<p align="center">
 # Check out our product!
 
 # [Stream Hopper Site](http://www.streamhopper.video/) <---- Get your recommendation now!
