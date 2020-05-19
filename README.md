@@ -4,11 +4,15 @@
 
 <h1 align = 'center'><b>Check out our product!</b></h1>
 
+<h1 align = 'center'><a href="http://www.streamhopper.video/">Stream Hopper Live Site </a><---- Get your recommendation now!</h1>
+
 # [Stream Hopper Site](http://www.streamhopper.video/) <---- Get your recommendation now!
 
 <h1 align = 'center'><u>Videos:</u></h1>
 
 <h1 align = 'center'><a href="https://youtu.be/LxyyNk5sFxc">Stream Hopper Pitch</a></h1>
+
+<h1 align = 'center'><a href="https://youtu.be/n6VAeDgY7sI">Stream Hopper Advertisement</a></h1>
 
 
 
